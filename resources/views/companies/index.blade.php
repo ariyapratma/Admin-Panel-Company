@@ -3,9 +3,14 @@
 @section('title', 'Companies List')
 @section('content')
     <div class="container">
+        <a href='{{ url('dashboard') }}' class="btn btn-primary">
+            &#x2190;
+        </a>
+        <br>
+        <br>
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-0">Companies</h2>
-            <a href="{{ route('companies.create') }}" class="btn btn-success">Add New Company</a>
+            <a href="{{ route('companies.create') }}" class="btn btn-primary">Add New Company</a>
         </div>
 
         @if (session('success'))

@@ -30,7 +30,7 @@
             Swal.fire({
                 icon: 'success',
                 title: 'Welcome!',
-                text: 'You are logged in!',
+                text: 'You Are Logged In!',
                 timer: 3000,
                 showConfirmButton: false
             });

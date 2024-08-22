@@ -18,6 +18,7 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
         $this->middleware('auth')->only('logout');
+        Session::flash('success', 'You Are Logout Successfully!');
     }
 
     public function login(Request $request)
@@ -31,7 +32,7 @@ class LoginController extends Controller
 
         if ($this->attemptLogin($request)) {
             // Flash success message to session
-            Session::flash('success', 'You are logged in successfully!');
+            Session::flash('success', 'You Are Logged In Successfully!');
             return $this->sendLoginResponse($request);
         }
 

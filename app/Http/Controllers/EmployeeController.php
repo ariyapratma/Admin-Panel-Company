@@ -34,11 +34,15 @@ class EmployeeController extends Controller
 
         $employee = Employee::create($validated);
 
-        // Uncomment to send email notification
-        // $company = Company::findOrFail($request->company_id);
-        // Mail::to($company->email)->send(new EmployeeAdded($employee));
+        // Send Email To Company
+        $company = Company::findOrFail($request->company_id);
+        $adminEmail = 'admin@folkatech.com';
 
-        return redirect()->route('employees.index')->with('success', 'Employee Created Successfully And Notification Sent!');
+        try {
+            Mail::to($adminEmail)->send(new EmployeeAdded($employee, $company));
+        } catch (\Exception $e) {
+            return redirect()->route('employees.index')->with('success', 'Employee Created Successfully And Notification Sent!');
+        }
     }
 
     public function show(Employee $employee)
